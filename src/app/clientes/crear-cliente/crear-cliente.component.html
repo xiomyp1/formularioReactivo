@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <!-- directiva ngSubmnit lo igualamos a un metodo, y esto detecta tanto el boton de tipo submit como el intro. -->
+        <form [formGroup]="form" (ngSubmit)="enviarCliente()">
+            <div class="row">
+                <div class="col-100">
+                    <label>
+                        Nombre Cliente
+                        <span class="danger" *ngIf="form.controls.nombre.invalid">Obligatorio</span>
+                    </label>
+                    <input type="text" formControlName="nombre">
+                </div>
+                <div class="col-100">
+                    <label>
+                        CIF
+                        <span class="danger" *ngIf="form.controls.cif.invalid">Obligatorio (9 caracteres)</span>
+                    </label>
+                    <input type="text" formControlName="cif">
+                </div>
+                <div class="col-100">
+                    <label>Dirección</label>
+                    <input type="text" formControlName="direccion">
+                </div>
+                <div class="col-100">
+                    <label>Localidad</label>
+                    <input type="text" formControlName="localidad">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-100 flex j-end">
+                    <!-- Se le pasa como propety binding disable y le pasamos el valor de form invalid que quiere decir mientras el formulario este invalido no envie. -->
+                    <button [disabled]="form.invalid" type="submit">Enviar</button>
+                </div>
+            </div>
+            <!-- Estados del formulario -->
+            Estados pristine: {{form.controls.cif.pristine}} <br>
+            <!-- cuando ya se ha ensuciado el componente nos devolvera true -->
+            Estados dirty: {{form.controls.cif.dirty}} <br>
+            <!-- cuando coge el foco -->
+            Estados touched: {{form.controls.cif.touched}} <br>
+            <!-- cuando coge ha soltado el foco -->
+            Estados untouched: {{form.controls.cif.untouched}} <br>
+            <!-- estado valid -->
+            Estados valid: {{form.controls.cif.valid}} <br>
+             <!-- estado invalid -->
+             Estados invalid: {{form.controls.cif.invalid}} <br>
+            <pre>
+
+            </pre>
+        </form>
+    </div>
+</div>
